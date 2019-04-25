@@ -1,0 +1,14 @@
+gunicorn --bind 127.0.0.1:8000 app:app &
+#ps -ef | grep gunicorn
+#kill -9 gunicorn
+#gunicorn --bind 127.0.0.1:8000 app:app & -p procidfile ----> Stores pid in 
+#procidfile
+#I was also trying to run gunicorn or flask dev server on 80 (not using nginx) to  
+#check if it can be done- seems to be some permissions problem- gunicorn & python 
+#code is in sativenv 
+#and may be it needs root permissions etc.
+service nginx status
+
+Start nginx
+sudo service nginx start
+sudo service nginx reload

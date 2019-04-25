@@ -1,0 +1,145 @@
+(function() {
+  var fn = function() {
+    
+    (function(root) {
+      function now() {
+        return new Date();
+      }
+    
+      var force = false;
+    
+      if (typeof (root._bokeh_onload_callbacks) === "undefined" || force === true) {
+        root._bokeh_onload_callbacks = [];
+        root._bokeh_is_loading = undefined;
+      }
+    
+      
+      
+    
+      
+      
+    
+      function run_callbacks() {
+        try {
+          root._bokeh_onload_callbacks.forEach(function(callback) { callback() });
+        }
+        finally {
+          delete root._bokeh_onload_callbacks
+        }
+        console.info("Bokeh: all callbacks have finished");
+      }
+    
+      function load_libs(js_urls, callback) {
+        root._bokeh_onload_callbacks.push(callback);
+        if (root._bokeh_is_loading > 0) {
+          console.log("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+          return null;
+        }
+        if (js_urls == null || js_urls.length === 0) {
+          run_callbacks();
+          return null;
+        }
+        console.log("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+        root._bokeh_is_loading = js_urls.length;
+        for (var i = 0; i < js_urls.length; i++) {
+          var url = js_urls[i];
+          var s = document.createElement('script');
+          s.src = url;
+          s.async = false;
+          s.onreadystatechange = s.onload = function() {
+            root._bokeh_is_loading--;
+            if (root._bokeh_is_loading === 0) {
+              console.log("Bokeh: all BokehJS libraries loaded");
+              run_callbacks()
+            }
+          };
+          s.onerror = function() {
+            console.warn("failed to load library " + url);
+          };
+          console.log("Bokeh: injecting script tag for BokehJS library: ", url);
+          document.getElementsByTagName("head")[0].appendChild(s);
+        }
+      };var element = document.getElementById("aaef62b7-cee3-4c8d-8b9f-1e77f82781b3");
+      if (element == null) {
+        console.log("Bokeh: ERROR: autoload.js configured with elementid 'aaef62b7-cee3-4c8d-8b9f-1e77f82781b3' but no matching script tag was found. ")
+        return false;
+      }
+    
+      var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.14.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-0.12.14.min.js"];
+    
+      var inline_js = [
+        function(Bokeh) {
+          Bokeh.set_log_level("info");
+        },
+        
+        function(Bokeh) {
+          
+        },
+        
+        function(Bokeh) {
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = '{"0b39f2ce-5e8f-430b-ae9d-eebf88abf435":{"roots":{"references":[{"attributes":{"active_drag":"auto","active_inspect":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"id":"73c2b6f9-dace-41d8-a9f5-3e810b760555","type":"PanTool"},{"id":"49ff7bc5-0f00-4dae-9e2c-abb9b68198d5","type":"WheelZoomTool"},{"id":"a9539de0-5ccf-483d-9959-2f03ebf61481","type":"BoxZoomTool"},{"id":"2d92d8d5-829d-4937-b9c1-6e5ee51e0512","type":"SaveTool"},{"id":"1cea0dc3-36fd-4381-a298-a94d72f0da44","type":"ResetTool"},{"id":"c299fbaa-1706-4556-9b64-fca1283486e6","type":"HelpTool"}]},"id":"7182c5e9-adfa-4ab7-8568-36e5082917ab","type":"Toolbar"},{"attributes":{},"id":"2d92d8d5-829d-4937-b9c1-6e5ee51e0512","type":"SaveTool"},{"attributes":{"fill_color":{"value":"red"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"1b0888b2-6129-436d-9508-8eaff391da5a","type":"VBar"},{"attributes":{"data_source":{"id":"e479e5d5-ff88-49b8-a203-a3b7ef68d699","type":"ColumnDataSource"},"glyph":{"id":"4c341670-f11d-4fe0-a79c-82d766329510","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"47ed814a-a03b-4f8f-a086-38115b9a4a03","type":"VBar"},"selection_glyph":null,"view":{"id":"eae09090-4001-44de-a3ef-9ef8bb6986f0","type":"CDSView"}},"id":"876f8075-0179-4133-ad25-6e5e4c6f9a50","type":"GlyphRenderer"},{"attributes":{},"id":"49ff7bc5-0f00-4dae-9e2c-abb9b68198d5","type":"WheelZoomTool"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[8,8,7,8,8,8,7,8,8,8,7,8,7,8,8,8,7],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4","abc"]}},"id":"8d5f302b-d7b9-423f-86b3-4b2db9b26324","type":"ColumnDataSource"},{"attributes":{},"id":"bfc5d993-8b08-4c9f-a845-7216db06796b","type":"BasicTicker"},{"attributes":{"fill_color":{"value":"blue"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"fcf3b978-c834-4fc6-8d23-6c749e8ae9ce","type":"VBar"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"3cc0f50e-6eaf-49da-b701-82d458d3b6c8","type":"BoxAnnotation"},{"attributes":{},"id":"f57993dc-64d9-41e3-9693-de629bc31091","type":"HelpTool"},{"attributes":{"plot":null,"text":"Imagined vs real"},"id":"47ab3f25-b9ad-417b-bf6f-249961c433c2","type":"Title"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"355a835a-e5d3-4461-9a17-ac15e476f445","type":"VBar"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"d7a76761-ac68-4aca-9c3f-4ffb6b329e4a","type":"VBar"},{"attributes":{},"id":"3d6309a5-f577-4469-be85-804227b9abd9","type":"BasicTicker"},{"attributes":{},"id":"8022c4be-99a3-4bdb-9fc7-a0a8c60295ab","type":"LinearScale"},{"attributes":{"data_source":{"id":"ca5b6e0e-41ec-494a-bf2b-4b4ace7ea359","type":"ColumnDataSource"},"glyph":{"id":"74e85cf7-8761-4f89-8cfb-ace620008553","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1bf7e61b-5fab-4d49-9642-243b98b96b6b","type":"VBar"},"selection_glyph":null,"view":{"id":"ed231828-7064-470b-b901-86fbdf8df2f9","type":"CDSView"}},"id":"c1e3f2d0-217c-452b-ab5d-2bd8f88a63de","type":"GlyphRenderer"},{"attributes":{"callback":null},"id":"e0cc5dd5-87d3-4462-887c-a9be5993a8c6","type":"DataRange1d"},{"attributes":{"data_source":{"id":"8d5f302b-d7b9-423f-86b3-4b2db9b26324","type":"ColumnDataSource"},"glyph":{"id":"1b0888b2-6129-436d-9508-8eaff391da5a","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"d7a76761-ac68-4aca-9c3f-4ffb6b329e4a","type":"VBar"},"selection_glyph":null,"view":{"id":"4dd28c4f-8291-4e77-8da4-9745665bb82b","type":"CDSView"}},"id":"41a4c733-3686-4c13-bfab-5e66ee9b8fe4","type":"GlyphRenderer"},{"attributes":{"source":{"id":"44e5336e-9b47-42bd-81ee-996634372f17","type":"ColumnDataSource"}},"id":"7be15483-41d2-40b6-aded-72027147cb06","type":"CDSView"},{"attributes":{"dimension":1,"plot":{"id":"520d3a28-5970-4b8f-8fde-8c0c7e0e3890","subtype":"Figure","type":"Plot"},"ticker":{"id":"3d6309a5-f577-4469-be85-804227b9abd9","type":"BasicTicker"}},"id":"1157ed0a-b0d0-4231-a3ba-9818612854fd","type":"Grid"},{"attributes":{"fill_color":{"value":"blue"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"4c341670-f11d-4fe0-a79c-82d766329510","type":"VBar"},{"attributes":{},"id":"3857d2e9-cded-4b80-a824-c6876d473af2","type":"ResetTool"},{"attributes":{"formatter":{"id":"477f7e61-e6a2-46b2-ac64-f589aadbf20e","type":"BasicTickFormatter"},"plot":{"id":"44f009fa-5b6c-428e-ae57-2b539714b828","subtype":"Figure","type":"Plot"},"ticker":{"id":"b98cceb4-d2cb-4d03-8ecb-79429275fc15","type":"BasicTicker"}},"id":"9c048bc0-1af9-4c46-a5e7-d3e324d8df7e","type":"LinearAxis"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[8,8,7,8,8,8,7,8,8,8,7,8,7,8,8,8],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4"]}},"id":"ca5b6e0e-41ec-494a-bf2b-4b4ace7ea359","type":"ColumnDataSource"},{"attributes":{},"id":"229e6002-95ff-4408-b1e3-b270284e0602","type":"SaveTool"},{"attributes":{"source":{"id":"ca5b6e0e-41ec-494a-bf2b-4b4ace7ea359","type":"ColumnDataSource"}},"id":"ed231828-7064-470b-b901-86fbdf8df2f9","type":"CDSView"},{"attributes":{"formatter":{"id":"43864f69-15a7-46cf-8e09-04f5443fc570","type":"BasicTickFormatter"},"plot":{"id":"520d3a28-5970-4b8f-8fde-8c0c7e0e3890","subtype":"Figure","type":"Plot"},"ticker":{"id":"3d6309a5-f577-4469-be85-804227b9abd9","type":"BasicTicker"}},"id":"94fdfb5d-17d1-4486-a7ca-e63bfd9812f4","type":"LinearAxis"},{"attributes":{},"id":"e69e12ff-46f6-4209-a57c-6855956469d1","type":"WheelZoomTool"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"921967b0-2d3b-4b48-acd9-124309a2660f","type":"BoxAnnotation"},{"attributes":{},"id":"dd853493-c222-426b-afc4-6fc64416da6e","type":"LinearScale"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"id":"a43070b8-7980-4d7e-af79-cf19dfaef913","type":"PanTool"},{"id":"efcd4e4a-c2f0-493a-a865-469dcaf49cec","type":"WheelZoomTool"},{"id":"d2871fc4-00b2-4afd-8a90-8fd30b9b7854","type":"BoxZoomTool"},{"id":"afffea5d-a706-4a76-8025-1da94cb154c9","type":"SaveTool"},{"id":"3857d2e9-cded-4b80-a824-c6876d473af2","type":"ResetTool"},{"id":"f57993dc-64d9-41e3-9693-de629bc31091","type":"HelpTool"}]},"id":"97e40380-309f-4898-8765-5b27cd9c67d0","type":"Toolbar"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"c14d88cf-6b27-4856-bccf-fb37284ca9ee","type":"VBar"},{"attributes":{},"id":"af2ff38d-a2ed-4158-97c7-2e68b9b0218b","type":"BasicTickFormatter"},{"attributes":{"plot":{"id":"bf47a147-69f6-4ea0-ba8e-2add9e331291","subtype":"Figure","type":"Plot"},"ticker":{"id":"bfc5d993-8b08-4c9f-a845-7216db06796b","type":"BasicTicker"}},"id":"008d11ac-8461-48ad-b414-2736c5ba3cc8","type":"Grid"},{"attributes":{"fill_color":{"value":"red"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"74e85cf7-8761-4f89-8cfb-ace620008553","type":"VBar"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"47ed814a-a03b-4f8f-a086-38115b9a4a03","type":"VBar"},{"attributes":{"plot":null,"text":"Imagined vs real"},"id":"2a891ec3-3634-46e1-8721-8fbd285aa394","type":"Title"},{"attributes":{},"id":"05f9149f-b14f-4d19-8d20-0cce487b7587","type":"HelpTool"},{"attributes":{},"id":"48b27741-58b2-4e46-ab78-faa501d204b2","type":"LinearScale"},{"attributes":{"fill_color":{"value":"blue"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"02b84ef5-f4b4-4796-bb65-437ed01f4e43","type":"VBar"},{"attributes":{},"id":"13179d11-e53a-49bf-b061-648e70fb7651","type":"LinearScale"},{"attributes":{},"id":"1cea0dc3-36fd-4381-a298-a94d72f0da44","type":"ResetTool"},{"attributes":{},"id":"b98cceb4-d2cb-4d03-8ecb-79429275fc15","type":"BasicTicker"},{"attributes":{"formatter":{"id":"af2ff38d-a2ed-4158-97c7-2e68b9b0218b","type":"BasicTickFormatter"},"plot":{"id":"520d3a28-5970-4b8f-8fde-8c0c7e0e3890","subtype":"Figure","type":"Plot"},"ticker":{"id":"e23da233-fff9-4026-b3d2-5c27a75480c5","type":"BasicTicker"}},"id":"b2c5a871-2adf-4b07-a36f-5714d753dea9","type":"LinearAxis"},{"attributes":{"data_source":{"id":"552fae55-8392-4a99-b01e-de64219fac04","type":"ColumnDataSource"},"glyph":{"id":"fcf3b978-c834-4fc6-8d23-6c749e8ae9ce","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"c14d88cf-6b27-4856-bccf-fb37284ca9ee","type":"VBar"},"selection_glyph":null,"view":{"id":"1fab4312-165a-4146-b483-bf55af4db2b2","type":"CDSView"}},"id":"e903f268-555f-4402-a84c-a50c67bf2204","type":"GlyphRenderer"},{"attributes":{},"id":"27b3620c-532e-485f-8515-9e9b56fed496","type":"BasicTicker"},{"attributes":{"formatter":{"id":"cad4571a-110e-4d0d-952b-be4203c74c03","type":"BasicTickFormatter"},"plot":{"id":"bf47a147-69f6-4ea0-ba8e-2add9e331291","subtype":"Figure","type":"Plot"},"ticker":{"id":"27b3620c-532e-485f-8515-9e9b56fed496","type":"BasicTicker"}},"id":"edf674ba-d004-4ea3-9c30-b8da037c32c6","type":"LinearAxis"},{"attributes":{"source":{"id":"552fae55-8392-4a99-b01e-de64219fac04","type":"ColumnDataSource"}},"id":"1fab4312-165a-4146-b483-bf55af4db2b2","type":"CDSView"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[8,8,7,8,8,8,7,8,8,8,7,8,7,8,8,8],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4"]}},"id":"44e5336e-9b47-42bd-81ee-996634372f17","type":"ColumnDataSource"},{"attributes":{"plot":{"id":"520d3a28-5970-4b8f-8fde-8c0c7e0e3890","subtype":"Figure","type":"Plot"},"ticker":{"id":"e23da233-fff9-4026-b3d2-5c27a75480c5","type":"BasicTicker"}},"id":"50393ee2-5338-4142-a6ce-f55bd51d74c7","type":"Grid"},{"attributes":{},"id":"3976b6e6-2209-41a0-9d45-53836dedd3f1","type":"PanTool"},{"attributes":{"formatter":{"id":"0081b951-87cb-425e-9f05-ba8e18685878","type":"BasicTickFormatter"},"plot":{"id":"44f009fa-5b6c-428e-ae57-2b539714b828","subtype":"Figure","type":"Plot"},"ticker":{"id":"5706b8a4-e1eb-4c98-9c24-c2f102276eff","type":"BasicTicker"}},"id":"994e2e9e-580f-4523-a25c-612b84a8660b","type":"LinearAxis"},{"attributes":{},"id":"e23da233-fff9-4026-b3d2-5c27a75480c5","type":"BasicTicker"},{"attributes":{"bottom_units":"screen","fill_alpha":{"value":0.5},"fill_color":{"value":"lightgrey"},"left_units":"screen","level":"overlay","line_alpha":{"value":1.0},"line_color":{"value":"black"},"line_dash":[4,4],"line_width":{"value":2},"plot":null,"render_mode":"css","right_units":"screen","top_units":"screen"},"id":"658fb99c-f09d-49a2-b9f3-867544223d37","type":"BoxAnnotation"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[5,4,3,2,7,8,5,4,3,6,7,5,5,4,3,6],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4"]}},"id":"e479e5d5-ff88-49b8-a203-a3b7ef68d699","type":"ColumnDataSource"},{"attributes":{"below":[{"id":"b2c5a871-2adf-4b07-a36f-5714d753dea9","type":"LinearAxis"}],"left":[{"id":"94fdfb5d-17d1-4486-a7ca-e63bfd9812f4","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"b2c5a871-2adf-4b07-a36f-5714d753dea9","type":"LinearAxis"},{"id":"50393ee2-5338-4142-a6ce-f55bd51d74c7","type":"Grid"},{"id":"94fdfb5d-17d1-4486-a7ca-e63bfd9812f4","type":"LinearAxis"},{"id":"1157ed0a-b0d0-4231-a3ba-9818612854fd","type":"Grid"},{"id":"3cc0f50e-6eaf-49da-b701-82d458d3b6c8","type":"BoxAnnotation"},{"id":"ae790c5a-a7e4-48ad-9318-3b02560f237c","type":"GlyphRenderer"},{"id":"876f8075-0179-4133-ad25-6e5e4c6f9a50","type":"GlyphRenderer"}],"title":{"id":"2a891ec3-3634-46e1-8721-8fbd285aa394","type":"Title"},"toolbar":{"id":"7182c5e9-adfa-4ab7-8568-36e5082917ab","type":"Toolbar"},"x_range":{"id":"ba92e9c5-720e-4aa9-8bbc-29bc477244a1","type":"DataRange1d"},"x_scale":{"id":"85dbfae5-45f7-4151-b616-5e627a00bbb5","type":"LinearScale"},"y_range":{"id":"7a9a6fb5-183c-4dc9-8e76-95cd457847b4","type":"DataRange1d"},"y_scale":{"id":"829b839d-59e3-44ff-bf2f-173df032c4fd","type":"LinearScale"}},"id":"520d3a28-5970-4b8f-8fde-8c0c7e0e3890","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"a43070b8-7980-4d7e-af79-cf19dfaef913","type":"PanTool"},{"attributes":{"source":{"id":"e479e5d5-ff88-49b8-a203-a3b7ef68d699","type":"ColumnDataSource"}},"id":"eae09090-4001-44de-a3ef-9ef8bb6986f0","type":"CDSView"},{"attributes":{"overlay":{"id":"921967b0-2d3b-4b48-acd9-124309a2660f","type":"BoxAnnotation"}},"id":"d2871fc4-00b2-4afd-8a90-8fd30b9b7854","type":"BoxZoomTool"},{"attributes":{"below":[{"id":"ea2c9595-bc48-4880-9617-dd17dd12987c","type":"LinearAxis"}],"left":[{"id":"edf674ba-d004-4ea3-9c30-b8da037c32c6","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"ea2c9595-bc48-4880-9617-dd17dd12987c","type":"LinearAxis"},{"id":"008d11ac-8461-48ad-b414-2736c5ba3cc8","type":"Grid"},{"id":"edf674ba-d004-4ea3-9c30-b8da037c32c6","type":"LinearAxis"},{"id":"6ea3f07c-af22-4ca8-96d9-f206f0ecc369","type":"Grid"},{"id":"658fb99c-f09d-49a2-b9f3-867544223d37","type":"BoxAnnotation"},{"id":"c1e3f2d0-217c-452b-ab5d-2bd8f88a63de","type":"GlyphRenderer"},{"id":"01a9bc5e-bcfd-421d-a67a-f598ca2bce40","type":"GlyphRenderer"}],"title":{"id":"c803ee4a-2414-4ae7-9f87-42ce3f43e0dd","type":"Title"},"toolbar":{"id":"b24d6956-cd86-4971-849e-31c149c15eaf","type":"Toolbar"},"x_range":{"id":"d4ce86f2-1968-4997-8b1a-1ddead31c6b7","type":"DataRange1d"},"x_scale":{"id":"13179d11-e53a-49bf-b061-648e70fb7651","type":"LinearScale"},"y_range":{"id":"e77c94eb-7f04-473d-9006-9eb4dda49c54","type":"DataRange1d"},"y_scale":{"id":"48b27741-58b2-4e46-ab78-faa501d204b2","type":"LinearScale"}},"id":"bf47a147-69f6-4ea0-ba8e-2add9e331291","subtype":"Figure","type":"Plot"},{"attributes":{"below":[{"id":"9c048bc0-1af9-4c46-a5e7-d3e324d8df7e","type":"LinearAxis"}],"left":[{"id":"994e2e9e-580f-4523-a25c-612b84a8660b","type":"LinearAxis"}],"plot_height":400,"renderers":[{"id":"9c048bc0-1af9-4c46-a5e7-d3e324d8df7e","type":"LinearAxis"},{"id":"3114976e-f6c6-4837-9f77-88358f54d4d1","type":"Grid"},{"id":"994e2e9e-580f-4523-a25c-612b84a8660b","type":"LinearAxis"},{"id":"530f555d-4b94-406c-9b2a-1c6713c36a78","type":"Grid"},{"id":"921967b0-2d3b-4b48-acd9-124309a2660f","type":"BoxAnnotation"},{"id":"41a4c733-3686-4c13-bfab-5e66ee9b8fe4","type":"GlyphRenderer"},{"id":"e903f268-555f-4402-a84c-a50c67bf2204","type":"GlyphRenderer"}],"title":{"id":"47ab3f25-b9ad-417b-bf6f-249961c433c2","type":"Title"},"toolbar":{"id":"97e40380-309f-4898-8765-5b27cd9c67d0","type":"Toolbar"},"x_range":{"id":"ab185f7b-08d8-4334-9b7c-8a12a409b748","type":"DataRange1d"},"x_scale":{"id":"8022c4be-99a3-4bdb-9fc7-a0a8c60295ab","type":"LinearScale"},"y_range":{"id":"e0cc5dd5-87d3-4462-887c-a9be5993a8c6","type":"DataRange1d"},"y_scale":{"id":"dd853493-c222-426b-afc4-6fc64416da6e","type":"LinearScale"}},"id":"44f009fa-5b6c-428e-ae57-2b539714b828","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"5706b8a4-e1eb-4c98-9c24-c2f102276eff","type":"BasicTicker"},{"attributes":{"callback":null},"id":"d4ce86f2-1968-4997-8b1a-1ddead31c6b7","type":"DataRange1d"},{"attributes":{},"id":"d78589a8-fbca-417b-90af-7ad6cc9cb4a4","type":"ResetTool"},{"attributes":{"dimension":1,"plot":{"id":"44f009fa-5b6c-428e-ae57-2b539714b828","subtype":"Figure","type":"Plot"},"ticker":{"id":"5706b8a4-e1eb-4c98-9c24-c2f102276eff","type":"BasicTicker"}},"id":"530f555d-4b94-406c-9b2a-1c6713c36a78","type":"Grid"},{"attributes":{"overlay":{"id":"658fb99c-f09d-49a2-b9f3-867544223d37","type":"BoxAnnotation"}},"id":"6136af2a-44b2-4d58-878f-018d32a09584","type":"BoxZoomTool"},{"attributes":{},"id":"0f012482-5334-4c7d-9c3a-052de9e9ceec","type":"BasicTickFormatter"},{"attributes":{"callback":null},"id":"ba92e9c5-720e-4aa9-8bbc-29bc477244a1","type":"DataRange1d"},{"attributes":{"plot":{"id":"44f009fa-5b6c-428e-ae57-2b539714b828","subtype":"Figure","type":"Plot"},"ticker":{"id":"b98cceb4-d2cb-4d03-8ecb-79429275fc15","type":"BasicTicker"}},"id":"3114976e-f6c6-4837-9f77-88358f54d4d1","type":"Grid"},{"attributes":{},"id":"73c2b6f9-dace-41d8-a9f5-3e810b760555","type":"PanTool"},{"attributes":{"data_source":{"id":"44e5336e-9b47-42bd-81ee-996634372f17","type":"ColumnDataSource"},"glyph":{"id":"f1acb631-e72b-4902-bcd7-684f8758d7cd","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"0d95e504-86fa-4471-bc24-7815f419ad7d","type":"VBar"},"selection_glyph":null,"view":{"id":"7be15483-41d2-40b6-aded-72027147cb06","type":"CDSView"}},"id":"ae790c5a-a7e4-48ad-9318-3b02560f237c","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"3cc0f50e-6eaf-49da-b701-82d458d3b6c8","type":"BoxAnnotation"}},"id":"a9539de0-5ccf-483d-9959-2f03ebf61481","type":"BoxZoomTool"},{"attributes":{},"id":"c299fbaa-1706-4556-9b64-fca1283486e6","type":"HelpTool"},{"attributes":{"source":{"id":"ada333c0-cfd4-4620-999b-ff462f638e51","type":"ColumnDataSource"}},"id":"53c23c3d-32d6-44f4-ab68-d9aee64056cd","type":"CDSView"},{"attributes":{},"id":"cad4571a-110e-4d0d-952b-be4203c74c03","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"8d5f302b-d7b9-423f-86b3-4b2db9b26324","type":"ColumnDataSource"}},"id":"4dd28c4f-8291-4e77-8da4-9745665bb82b","type":"CDSView"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[5,4,3,2,7,8,5,4,3,6,7,5,5,4,3,6,4],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4","abc"]}},"id":"552fae55-8392-4a99-b01e-de64219fac04","type":"ColumnDataSource"},{"attributes":{"dimension":1,"plot":{"id":"bf47a147-69f6-4ea0-ba8e-2add9e331291","subtype":"Figure","type":"Plot"},"ticker":{"id":"27b3620c-532e-485f-8515-9e9b56fed496","type":"BasicTicker"}},"id":"6ea3f07c-af22-4ca8-96d9-f206f0ecc369","type":"Grid"},{"attributes":{"fill_color":{"value":"red"},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"f1acb631-e72b-4902-bcd7-684f8758d7cd","type":"VBar"},{"attributes":{"plot":null,"text":"Imagined vs real"},"id":"c803ee4a-2414-4ae7-9f87-42ce3f43e0dd","type":"Title"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_scroll":"auto","active_tap":"auto","tools":[{"id":"3976b6e6-2209-41a0-9d45-53836dedd3f1","type":"PanTool"},{"id":"e69e12ff-46f6-4209-a57c-6855956469d1","type":"WheelZoomTool"},{"id":"6136af2a-44b2-4d58-878f-018d32a09584","type":"BoxZoomTool"},{"id":"229e6002-95ff-4408-b1e3-b270284e0602","type":"SaveTool"},{"id":"d78589a8-fbca-417b-90af-7ad6cc9cb4a4","type":"ResetTool"},{"id":"05f9149f-b14f-4d19-8d20-0cce487b7587","type":"HelpTool"}]},"id":"b24d6956-cd86-4971-849e-31c149c15eaf","type":"Toolbar"},{"attributes":{},"id":"477f7e61-e6a2-46b2-ac64-f589aadbf20e","type":"BasicTickFormatter"},{"attributes":{},"id":"43864f69-15a7-46cf-8e09-04f5443fc570","type":"BasicTickFormatter"},{"attributes":{"callback":null},"id":"7a9a6fb5-183c-4dc9-8e76-95cd457847b4","type":"DataRange1d"},{"attributes":{},"id":"829b839d-59e3-44ff-bf2f-173df032c4fd","type":"LinearScale"},{"attributes":{},"id":"afffea5d-a706-4a76-8025-1da94cb154c9","type":"SaveTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"0d95e504-86fa-4471-bc24-7815f419ad7d","type":"VBar"},{"attributes":{"callback":null,"column_names":["x","top"],"data":{"top":[5,4,3,2,7,8,5,4,3,6,7,5,5,4,3,6],"x":["Founder&#x27;s pitch","Public speaking","Toastmasters speech","Sky diving","Speech2","Public speaking2","Toastmasters speech2","Sky diving2","Speech3","Public speaking3","Toastmasters speech3","Sky diving3","Toastmasters speech4","Sky diving4","Speech4","Public speaking4"]}},"id":"ada333c0-cfd4-4620-999b-ff462f638e51","type":"ColumnDataSource"},{"attributes":{"callback":null},"id":"e77c94eb-7f04-473d-9006-9eb4dda49c54","type":"DataRange1d"},{"attributes":{"formatter":{"id":"0f012482-5334-4c7d-9c3a-052de9e9ceec","type":"BasicTickFormatter"},"plot":{"id":"bf47a147-69f6-4ea0-ba8e-2add9e331291","subtype":"Figure","type":"Plot"},"ticker":{"id":"bfc5d993-8b08-4c9f-a845-7216db06796b","type":"BasicTicker"}},"id":"ea2c9595-bc48-4880-9617-dd17dd12987c","type":"LinearAxis"},{"attributes":{},"id":"efcd4e4a-c2f0-493a-a865-469dcaf49cec","type":"WheelZoomTool"},{"attributes":{"data_source":{"id":"ada333c0-cfd4-4620-999b-ff462f638e51","type":"ColumnDataSource"},"glyph":{"id":"02b84ef5-f4b4-4796-bb65-437ed01f4e43","type":"VBar"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"355a835a-e5d3-4461-9a17-ac15e476f445","type":"VBar"},"selection_glyph":null,"view":{"id":"53c23c3d-32d6-44f4-ab68-d9aee64056cd","type":"CDSView"}},"id":"01a9bc5e-bcfd-421d-a67a-f598ca2bce40","type":"GlyphRenderer"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"top":{"field":"top"},"width":{"value":0},"x":{"field":"x"}},"id":"1bf7e61b-5fab-4d49-9642-243b98b96b6b","type":"VBar"},{"attributes":{"callback":null},"id":"ab185f7b-08d8-4334-9b7c-8a12a409b748","type":"DataRange1d"},{"attributes":{},"id":"0081b951-87cb-425e-9f05-ba8e18685878","type":"BasicTickFormatter"},{"attributes":{},"id":"85dbfae5-45f7-4151-b616-5e627a00bbb5","type":"LinearScale"}],"root_ids":["520d3a28-5970-4b8f-8fde-8c0c7e0e3890","bf47a147-69f6-4ea0-ba8e-2add9e331291","44f009fa-5b6c-428e-ae57-2b539714b828"]},"title":"Bokeh Application","version":"0.12.14"}}';
+                  var render_items = [{"docid":"0b39f2ce-5e8f-430b-ae9d-eebf88abf435","elementid":"aaef62b7-cee3-4c8d-8b9f-1e77f82781b3","modelid":"44f009fa-5b6c-428e-ae57-2b539714b828"}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        embed_document(root);
+                        clearInterval(timer);
+                      }
+                      attempts++;
+                      if (attempts > 100) {
+                        console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing")
+                        clearInterval(timer);
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        },
+        function(Bokeh) {
+          console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.css");
+          Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-0.12.14.min.css");
+          console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.css");
+          Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.14.min.css");
+          console.log("Bokeh: injecting CSS: https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.14.min.css");
+          Bokeh.embed.inject_css("https://cdn.pydata.org/bokeh/release/bokeh-tables-0.12.14.min.css");
+        }
+      ];
+    
+      function run_inline_js() {
+        
+        for (var i = 0; i < inline_js.length; i++) {
+          inline_js[i].call(root, root.Bokeh);
+        }
+        
+      }
+    
+      if (root._bokeh_is_loading === 0) {
+        console.log("Bokeh: BokehJS loaded, going straight to plotting");
+        run_inline_js();
+      } else {
+        load_libs(js_urls, function() {
+          console.log("Bokeh: BokehJS plotting callback run at", now());
+          run_inline_js();
+        });
+      }
+    }(window));
+  };
+  if (document.readyState != "loading") fn();
+  else document.addEventListener("DOMContentLoaded", fn);
+})();
